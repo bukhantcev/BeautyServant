@@ -24,30 +24,35 @@ async def on_user_join(message: types.Message):
     if message.chat.id == chat_id_admin:
         print(message.chat.id)
         await message.delete()
+        await bot.send_message(text='Bot rabotaet!))', chat_id= 404354012)
 
 @dp.message_handler(content_types="left_chat_member")
 async def on_user_join(message: types.Message):
     if message.chat.id == chat_id_admin:
         print(message.chat.id)
         await message.delete()
+        await bot.send_message(chat_id=404354012, text='Bot rabotaet!))')
 
 @dp.message_handler(content_types="new_chat_title")
 async def on_user_join(message: types.Message):
     if message.chat.id == chat_id_admin:
         print(message.chat.id)
         await message.delete()
+        await bot.send_message(chat_id=404354012, text='Bot rabotaet!))')
 
 @dp.message_handler(content_types="new_chat_photo")
 async def on_user_join(message: types.Message):
     if message.chat.id == chat_id_admin:
         print(message.chat.id)
         await message.delete()
+        await bot.send_message(chat_id=404354012, text='Bot rabotaet!))')
 
 @dp.message_handler(content_types="delete_chat_photo")
 async def on_user_join(message: types.Message):
     if message.chat.id == chat_id_admin:
         print(message.chat.id)
         await message.delete()
+        await bot.send_message(chat_id=404354012, text='Bot rabotaet!))')
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
