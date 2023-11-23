@@ -4,7 +4,7 @@ import os
 from aiogram import Bot, Dispatcher, executor, types
 
 API_TOKEN = os.getenv('TOKEN')
-#chat_id_admin = -1001911875283
+chat_id_admin = -1001911875283
 
 
 logging.basicConfig(level=logging.INFO)
