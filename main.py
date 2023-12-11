@@ -22,9 +22,9 @@ logging.basicConfig(level=logging.INFO)
 bot = Bot(token=API_TOKEN, parse_mode='html')
 dp = Dispatcher(bot, storage=memory)
 
-# @dp.message_handler(content_types='sticker')
-# async def allll(message: types.Message):
-#     print(message)
+@dp.message_handler(content_types='animation')
+async def allll(message: types.Message):
+    print(message)
 
 
 
@@ -91,6 +91,7 @@ async def result(message:types.Message, state:FSMContext):
     await bot.edit_message_text(text='0', chat_id=message.chat.id, message_id=message.message_id + 1)
     await asyncio.sleep(1)
     await bot.edit_message_text(text='Go!', chat_id=message.chat.id, message_id=message.message_id + 1)
+    await asyncio.sleep(1)
 
     print(my_list)
     stop = 0
@@ -101,7 +102,7 @@ async def result(message:types.Message, state:FSMContext):
             await asyncio.sleep(2)
         except:
             pass
-    await message.answer_sticker(sticker="CAACAgIAAxkBAAIQtmVvHkO3UQwuZCvM7vDlBAlY2eG9AAI-HQACA7WASjKx0mTDn6TGMwQ")
+    await message.answer_animation(animation="CgACAgIAAxkBAAIRY2V3VteFMRbioU4ZqoQnTm_S4hZzAAKvPwACBHe5S-knkj818dVjMwQ")
     await state.finish()
 
 
