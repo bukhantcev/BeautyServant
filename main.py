@@ -12,8 +12,8 @@ from aiogram.dispatcher import FSMContext
 
 memory = MemoryStorage()
 
-#API_TOKEN = os.getenv('TOKEN')
-API_TOKEN = '6283280993:AAHi8EqmQ41zE8rLl_0ayUexaX69DlCxs20'
+API_TOKEN = os.getenv('TOKEN')
+#API_TOKEN = '6283280993:AAHi8EqmQ41zE8rLl_0ayUexaX69DlCxs20'
 chat_id_admin = -1001911875283
 
 
