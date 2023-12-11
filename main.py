@@ -17,6 +17,7 @@ memory = MemoryStorage()
 API_TOKEN = os.getenv('TOKEN')
 #API_TOKEN = '6283280993:AAHi8EqmQ41zE8rLl_0ayUexaX69DlCxs20'
 chat_id_admin = -1001911875283
+admin_id = [404354012, 2066471197, 6602541405]
 
 
 logging.basicConfig(level=logging.INFO)
@@ -26,8 +27,7 @@ dp = Dispatcher(bot, storage=memory)
 
 # @dp.message_handler()
 # async def allll(message: types.Message):
-#     file = InputFile('animation.gif.mp4')
-#     await message.answer_animation(animation=file)
+#     print(message)
 
 
 
@@ -71,15 +71,15 @@ async def on_user_join(message: types.Message):
 
 @dp.message_handler(commands=['pusk'],state=None)
 async def go_random(message:types.Message, state:FSMContext):
-    #if message.chat.id == chat_id_admin:
-    await message.answer('Send list')
-    await NewItem.random.set()
+    if message.from_user.id in admin_id:
+        await message.answer('Отправь список')
+        await NewItem.random.set()
 
 
 @dp.message_handler(state=NewItem.random)
 async def result(message:types.Message, state:FSMContext):
     my_list = message.text.split('\n')
-    await message.answer('Ready')
+    await message.answer('Внимание!!!')
     await asyncio.sleep(2)
     await bot.edit_message_text(text='5', chat_id=message.chat.id, message_id=message.message_id+1)
     await asyncio.sleep(1)
@@ -96,7 +96,6 @@ async def result(message:types.Message, state:FSMContext):
     await bot.edit_message_text(text='Go!', chat_id=message.chat.id, message_id=message.message_id + 1)
     await asyncio.sleep(1)
 
-    print(my_list)
     stop = 0
     for i in range(10):
         index = random.randint(0, len(my_list)-1)
@@ -108,6 +107,12 @@ async def result(message:types.Message, state:FSMContext):
     file = InputFile('animation.gif.mp4')
     await message.answer_animation(animation=file)
     await state.finish()
+
+@dp.message_handler(state='*')
+async def exit(message:types.Message, state:FSMContext):
+    if 'exit' in message.text.lower():
+        await state.finish()
+        await message.answer('Ok')
 
 
 
