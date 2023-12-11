@@ -102,7 +102,8 @@ async def result(message:types.Message, state:FSMContext):
             await asyncio.sleep(2)
         except:
             pass
-    await message.answer_animation(animation="CgACAgIAAxkBAAIRY2V3VteFMRbioU4ZqoQnTm_S4hZzAAKvPwACBHe5S-knkj818dVjMwQ")
+    #await message.answer_animation(animation="CgACAgIAAxkBAAIRY2V3VteFMRbioU4ZqoQnTm_S4hZzAAKvPwACBHe5S-knkj818dVjMwQ")
+    await message.answer('NGBFXHFJ')
     await state.finish()
 
 
