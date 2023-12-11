@@ -5,6 +5,8 @@ import os
 import random
 import time
 
+from aiogram.types import InputFile
+
 from fsm_config import NewItem
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
@@ -22,9 +24,10 @@ logging.basicConfig(level=logging.INFO)
 bot = Bot(token=API_TOKEN, parse_mode='html')
 dp = Dispatcher(bot, storage=memory)
 
-@dp.message_handler(content_types='animation')
-async def allll(message: types.Message):
-    print(message)
+# @dp.message_handler()
+# async def allll(message: types.Message):
+#     file = InputFile('animation.gif.mp4')
+#     await message.answer_animation(animation=file)
 
 
 
@@ -102,8 +105,8 @@ async def result(message:types.Message, state:FSMContext):
             await asyncio.sleep(2)
         except:
             pass
-    await bot.send_animation(chat_id=message.chat.id, animation="CgACAgIAAxkBAAIRb2V3YPhUPliuMWkU5gwJFURr_eZVAAKvPwACBHe5S-knkj818dVjMwQ")
-    #await message.answer('NGBFXHFJ')
+    file = InputFile('animation.gif.mp4')
+    await message.answer_animation(animation=file)
     await state.finish()
 
 
